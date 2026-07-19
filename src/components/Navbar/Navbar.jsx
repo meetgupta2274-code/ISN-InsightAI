@@ -24,10 +24,15 @@ const Navbar = () => {
   const handleNavClick = (e, href) => {
     e.preventDefault();
     setMenuOpen(false);
-    const target = document.querySelector(href);
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+    // Delay scroll so mobile menu close animation finishes first.
+    // Without this, scrollIntoView fires while the DOM is still shifting,
+    // causing the scroll to land in the wrong place on mobile browsers.
+    setTimeout(() => {
+      const target = document.querySelector(href);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }, 350);
   };
 
   return (
