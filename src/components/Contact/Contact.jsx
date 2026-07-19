@@ -40,7 +40,7 @@ const OFFICE_LOCATION = [18.9220, 72.8347];
 
 const Contact = () => {
   const formRef = useRef(null);
-  const [formState, setFormState] = useState({ name: '', email: '', company: '', message: '' });
+  const [formState, setFormState] = useState({ user_name: '', user_email: '', company: '', message: '' });
   const [status, setStatus] = useState('idle'); // idle | loading | success | error
   const [focusedField, setFocusedField] = useState(null);
 
@@ -60,7 +60,7 @@ const Contact = () => {
         import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'YOUR_PUBLIC_KEY',
       );
       setStatus('success');
-      setFormState({ name: '', email: '', company: '', message: '' });
+      setFormState({ user_name: '', user_email: '', company: '', message: '' });
     } catch (err) {
       console.error('EmailJS error:', err);
       setStatus('error');
@@ -140,7 +140,7 @@ const Contact = () => {
                           name="user_name"
                           id="input-name"
                           placeholder="Your Name *"
-                          value={formState.name}
+                          value={formState.user_name}
                           onChange={handleChange}
                           onFocus={() => setFocusedField('name')}
                           onBlur={() => setFocusedField(null)}
@@ -157,7 +157,7 @@ const Contact = () => {
                           name="user_email"
                           id="input-email"
                           placeholder="Email Address *"
-                          value={formState.email}
+                          value={formState.user_email}
                           onChange={handleChange}
                           onFocus={() => setFocusedField('email')}
                           onBlur={() => setFocusedField(null)}
